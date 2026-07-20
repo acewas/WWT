@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Careers | Waswide Technologies{% endblock %}
+{% block content %}
+<section class="page-header py-5"><div class="container"><p class="eyebrow">Careers</p><h1>Build Africa's technology, energy, and design future with WWT.</h1><p class="lead">Open roles are managed in Django admin. Applications are stored securely in the database with uploaded CVs.</p></div></section>
+<section class="py-5"><div class="container"><div class="row g-4">{% for job in jobs %}<div class="col-md-6"><article class="feature-card h-100"><i class="bi bi-briefcase"></i><h2>{{ job.title }}</h2><p>{{ job.summary }}</p><p class="post-meta">{{ job.location }} / {{ job.get_employment_type_display }}{% if job.closing_date %} / closes {{ job.closing_date }}{% endif %}</p><a class="btn btn-primary" href="{{ job.get_absolute_url }}">Apply</a></article></div>{% empty %}<p>No open positions at the moment. Subscribe for future opportunities.</p>{% endfor %}</div></div></section>
+{% endblock %}

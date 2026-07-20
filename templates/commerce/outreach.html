@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Outreach | Waswide Technologies{% endblock %}
+{% block content %}
+<section class="page-header py-5"><div class="container"><p class="eyebrow">Outreach</p><h1>Community impact through STEM, open source, solar awareness, and rural technology programs.</h1></div></section>
+<section class="py-5"><div class="container"><div class="row g-4">{% for event in events %}<div class="col-md-6 col-lg-4"><article class="product-card h-100">{% if event.image %}<img src="{{ event.image.url }}" alt="{{ event.title }}">{% endif %}<div class="p-4"><span class="category-pill">{{ event.program_type|default:"Outreach" }}</span><h2>{{ event.title }}</h2><p>{{ event.summary }}</p><p class="post-meta">{{ event.location }}{% if event.event_date %} / {{ event.event_date }}{% endif %}</p></div></article></div>{% empty %}<p>Add outreach events in Django admin.</p>{% endfor %}</div></div></section>
+{% endblock %}

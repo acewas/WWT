@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: wwt-django
+    env: docker
+    repo: https://github.com/acewas/WWT.git
+    branch: master
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        value: django-insecure-wwt-secret-key-change-in-production
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: DJANGO_ALLOWED_HOSTS
+        value: wwt-django.onrender.com
+      - key: DJANGO_SETTINGS_MODULE
+        value: website.settings
+      - key: PYTHONUNBUFFERED
+        value: "1"

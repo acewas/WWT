@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}{{ service.title }} | WWT Services{% endblock %}
+{% block content %}
+<section class="page-header py-5"><div class="container"><p class="eyebrow">{{ service.get_area_display }}</p><h1>{{ service.title }}</h1><p class="lead">{{ service.summary }}</p><a class="btn btn-primary btn-lg" href="{% url 'contact' %}">Discuss This Service</a></div></section>
+<section class="py-5"><div class="container"><div class="row g-5"><div class="col-lg-7"><h2>Description</h2><p>{{ service.description|default:service.summary|linebreaks }}</p><h2>Benefits</h2><ul>{% for benefit in service.benefit_list %}<li>{{ benefit }}</li>{% empty %}<li>Improved reliability, performance, and operational clarity.</li>{% endfor %}</ul></div><aside class="col-lg-5"><div class="sidebar-panel"><h2>Technologies Used</h2><div class="d-flex flex-wrap gap-2">{% for item in service.technology_list %}<span class="category-pill">{{ item }}</span>{% empty %}<span class="category-pill">Python</span><span class="category-pill">Django</span><span class="category-pill">Linux</span>{% endfor %}</div></div><div class="sidebar-panel mt-4"><h2>Industries Served</h2><ul>{% for item in service.industry_list %}<li>{{ item }}</li>{% empty %}<li>Government</li><li>SMEs</li><li>Education</li><li>Energy</li>{% endfor %}</ul></div></aside></div></div></section>
+{% endblock %}

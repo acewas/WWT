@@ -1,0 +1,11 @@
+<!doctype html>
+<html>
+<body style="font-family:Arial,sans-serif;color:#1f2937;line-height:1.6">
+    <h1 style="color:#111827">{{ post.title }}</h1>
+    {% if post.featured_image %}
+    <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" style="max-width:100%;border-radius:8px">
+    {% endif %}
+    <p>{{ post.summary }}</p>
+    <p><a href="{{ post.absolute_url }}" style="display:inline-block;background:#0d6efd;color:#fff;padding:12px 18px;border-radius:6px;text-decoration:none">Read More</a></p>
+</body>
+</html>
