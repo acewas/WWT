@@ -1,44 +1,105 @@
 {% extends "base.html" %}
-{% block title %}Waswide Technologies | Elevating Africa{% endblock %}
+{% load static %}
+{% block title %}
+Waswide Technologies | Elevating Africa
+{% endblock %}
 {% block content %}
 <section class="hero-section">
     <div class="container">
         <div class="row align-items-center min-vh-75 py-5">
+
             <div class="col-lg-7">
                 <p class="eyebrow">Waswide Technologies</p>
+
                 <h1>Elevating Africa Through Technology</h1>
-                <p class="lead">Building resilient software systems, sustainable energy solutions, and strategic innovations for Africa's future.</p>
+
+                <p class="lead">
+                    Building resilient software systems, sustainable energy
+                    solutions, and strategic innovations for Africa's future.
+                </p>
+
                 <div class="d-flex flex-wrap gap-2 mt-4">
-                    <a class="btn btn-primary btn-lg" href="{% url 'services' %}">Explore Services</a>
-                    <a class="btn btn-outline-light btn-lg" href="{% url 'blog_list' %}">Read Our Blog</a>
-                    <a class="btn btn-outline-light btn-lg" href="{% url 'careers' %}">Join Our Team</a>
+                    <a class="btn btn-primary btn-lg" href="{% url 'services' %}">
+                        Explore Services
+                    </a>
+
+                    <a class="btn btn-outline-light btn-lg" href="{% url 'blog_list' %}">
+                        Read Our Blog
+                    </a>
+
+                    <a class="btn btn-outline-light btn-lg" href="{% url 'careers' %}">
+                        Join Our Team
+                    </a>
                 </div>
             </div>
+
+            <div class="col-lg-5 text-center">
+                <img src="{% static 'images/hero.png' %}" class="img-fluid hero-image animate-right"
+                    alt="Waswide Technologies">
+            </div>
+
         </div>
     </div>
 </section>
 
-<section class="py-5">
+<section class="stats-section py-5">
     <div class="container">
-        <div class="section-heading">
-            <p class="eyebrow">Featured Services</p>
-            <h2>Technology, energy, and design systems for African transformation.</h2>
+
+        <div class="section-heading text-center mb-5">
+            <p class="eyebrow">Our Impact</p>
+            <h2>Driving Innovation Across Africa</h2>
         </div>
-        <div class="row g-4">
-            {% for service in services %}
-            <div class="col-md-4">
-                <article class="feature-card h-100">
-                    <i class="bi {{ service.icon|default:'bi-cpu' }}"></i>
-                    <h3>{{ service.title }}</h3>
-                    <p>{{ service.summary }}</p>
-                    {% if service.slug %}<a class="text-link" href="{{ service.get_absolute_url }}">View capability</a>{% endif %}
-                </article>
+
+        <div class="row text-center">
+
+            <div class="col-md-3 mb-4">
+                <h2>1000+</h2>
+                <p>Research Projects</p>
             </div>
-            {% empty %}
-            <div class="col-12"><p>Add services in the admin dashboard.</p></div>
-            {% endfor %}
+
+            <div class="col-md-3 mb-4">
+                <h2>9+</h2>
+                <p>Years Experience</p>
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <h2>30+</h2>
+                <p>Technology Solutions</p>
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <h2>100%</h2>
+                <p>African Focus</p>
+            </div>
+
         </div>
+
     </div>
+</section>
+<p class="eyebrow">Featured Services</p>
+<h2>Technology, energy, and design systems for African transformation.</h2>
+</div>
+<div class="row g-4">
+    {% for service in services %}
+    <div class="col-md-4">
+        <article class="feature-card h-100">
+            <div class="icon-box">
+                <i class="bi {{ service.icon|default:'bi-cpu' }}"></i>
+
+            </div>
+            <h3>{{ service.title }}</h3>
+            <p>{{ service.summary }}</p>
+            {% if service.slug %}<a class="text-link" href="{{ service.get_absolute_url }}">View
+                capability</a>{% endif %}
+        </article>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <p>Add services in the admin dashboard.</p>
+    </div>
+    {% endfor %}
+</div>
+</div>
 </section>
 
 <section class="py-5 bg-soft">
@@ -60,7 +121,9 @@
                 </article>
             </div>
             {% empty %}
-            <div class="col-12"><p>Add featured projects in the admin dashboard.</p></div>
+            <div class="col-12">
+                <p>Add featured projects in the admin dashboard.</p>
+            </div>
             {% endfor %}
         </div>
     </div>
@@ -70,7 +133,8 @@
     <div class="container">
         <div class="section-heading">
             <p class="eyebrow">Mission</p>
-            <h2>To empower Africa through innovative software engineering, sustainable energy solutions, strategic design, and thought leadership.</h2>
+            <h2>To empower Africa through innovative software engineering, sustainable energy solutions, strategic
+                design, and thought leadership.</h2>
         </div>
         <div class="row g-4">
             {% for plan in pricing_plans %}
@@ -82,7 +146,9 @@
                 </article>
             </div>
             {% empty %}
-            <div class="col-12"><p>Add pricing plans in the admin dashboard.</p></div>
+            <div class="col-12">
+                <p>Add pricing plans in the admin dashboard.</p>
+            </div>
             {% endfor %}
         </div>
     </div>
@@ -92,8 +158,8 @@
     <div class="container">
         <div class="section-heading d-flex flex-column flex-md-row justify-content-between gap-3">
             <div>
-            <p class="eyebrow">Knowledge Hub</p>
-            <h2>Engineering, governance, green energy, and strategic design insights.</h2>
+                <p class="eyebrow">Knowledge Hub</p>
+                <h2>Engineering, governance, green energy, and strategic design insights.</h2>
             </div>
             <a class="btn btn-outline-dark align-self-md-end" href="{% url 'blog_list' %}">View All</a>
         </div>
@@ -101,7 +167,9 @@
             {% for post in latest_posts %}
             <div class="col-md-4">{% include "blog/_post_card.html" with post=post %}</div>
             {% empty %}
-            <div class="col-12"><p>Publish posts in the admin dashboard to show them here.</p></div>
+            <div class="col-12">
+                <p>Publish posts in the admin dashboard to show them here.</p>
+            </div>
             {% endfor %}
         </div>
     </div>
@@ -127,7 +195,9 @@
                 </article>
             </div>
             {% empty %}
-            <div class="col-12"><p>No open roles yet.</p></div>
+            <div class="col-12">
+                <p>No open roles yet.</p>
+            </div>
             {% endfor %}
         </div>
     </div>

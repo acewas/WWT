@@ -13,7 +13,7 @@ python manage.py seed_demo
 python manage.py runserver
 ```
 
-Open `http://127.0.0.1:8000/`.
+Open `http://127.0.0.1:8000/`.   #54.83.11.30
 
 ### With Docker (PostgreSQL)
 

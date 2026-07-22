@@ -8,7 +8,9 @@ services:
     envVars:
       - key: DJANGO_SECRET_KEY
         value: django-insecure-wwt-secret-key-change-in-production
-      - key: DJANGO_DEBUG
+      - key: DJANGO
+      
+      _DEBUG
         value: "False"
       - key: DJANGO_ALLOWED_HOSTS
         value: wwt-django.onrender.com
