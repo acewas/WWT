@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}{% if category %}{{ category.name }} | {% endif %}Blog | Codex Commerce{% endblock %}
+{% block content %}
+<section class="page-header py-5">
+    <div class="container">
+        <p class="eyebrow">Blog</p>
+        <h1>{% if category %}{{ category.name }} articles{% else %}Insights, guides, and updates.{% endif %}</h1>
+        <form class="search-bar mt-4" method="get">
+            {{ search_form.q }}
+            <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
+        </form>
+    </div>
+</section>
+<section class="py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-8">
+                <div class="row g-4">
+                    {% for post in posts %}
+                    <div class="col-md-6">{% include "blog/_post_card.html" with post=post %}</div>
+                    {% empty %}
+                    <p>No articles found.</p>
+                    {% endfor %}
+                </div>
+                {% if is_paginated %}
+                <nav class="mt-5" aria-label="Blog pagination">
+                    <ul class="pagination">
+                        {% if page_obj.has_previous %}<li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>{% endif %}
+                        <li class="page-item active"><span class="page-link">{{ page_obj.number }}</span></li>
+                        {% if page_obj.has_next %}<li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>{% endif %}
+                    </ul>
+                </nav>
+                {% endif %}
+            </div>
+            <aside class="col-lg-4">
+                <div class="sidebar-panel">
+                    <h2>Categories</h2>
+                    <div class="d-flex flex-wrap gap-2">
+                        {% for item in categories %}<a class="category-pill" href="{{ item.get_absolute_url }}">{{ item.name }}</a>{% endfor %}
+                    </div>
+                </div>
+                <div class="sidebar-panel mt-4">
+                    <h2>Featured</h2>
+                    {% for post in featured_posts %}
+                    <a class="featured-link" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                    {% endfor %}
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+{% endblock %}

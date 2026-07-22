@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}{{ job.title }} | WWT Careers{% endblock %}
+{% block content %}
+<section class="page-header py-5"><div class="container"><p class="eyebrow">Career Opportunity</p><h1>{{ job.title }}</h1><p class="lead">{{ job.location }} / {{ job.get_employment_type_display }}</p></div></section>
+<section class="py-5"><div class="container"><div class="row g-5"><div class="col-lg-6"><h2>About the Role</h2><p>{{ job.summary }}</p><h2>Responsibilities</h2><ul>{% for item in job.responsibility_list %}<li>{{ item }}</li>{% endfor %}</ul><h2>Requirements</h2><ul>{% for item in job.requirement_list %}<li>{{ item }}</li>{% endfor %}</ul></div><div class="col-lg-6"><form class="form-panel" method="post" enctype="multipart/form-data">{% csrf_token %}{{ form.as_p }}<button class="btn btn-primary" type="submit">Submit Application</button></form></div></div></div></section>
+{% endblock %}

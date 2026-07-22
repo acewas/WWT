@@ -1,0 +1,7 @@
+New article from {{ site_name }}
+
+{{ post.title }}
+
+{{ post.summary }}
+
+Read more: {{ post.absolute_url }}

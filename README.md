@@ -4,6 +4,11 @@ A commercial Django website with business pages, services, products, pricing, te
 
 ## Quick Start
 
+<<<<<<< HEAD
+=======
+### Local Development (SQLite)
+
+>>>>>>> developer
 ```powershell
 pip install -r requirements.txt
 python manage.py migrate
@@ -11,7 +16,26 @@ python manage.py seed_demo
 python manage.py runserver
 ```
 
+<<<<<<< HEAD
 Open `http://127.0.0.1:8000/`.
+=======
+Open `http://127.0.0.1:8000/`.   #54.83.11.30
+
+### With Docker (PostgreSQL)
+
+```powershell
+docker-compose up -d
+```
+
+Then run migrations inside the container:
+
+```powershell
+docker exec wwt-django python manage.py migrate
+docker exec wwt-django python manage.py seed_demo
+```
+
+Open `http://localhost:8000/` (Django), `http://localhost:5050/` (PgAdmin).
+>>>>>>> developer
 
 Demo admin credentials after seeding:
 
@@ -51,6 +75,33 @@ $env:CONTACT_TO_EMAIL="hello@example.com"
 $env:SITE_URL="https://example.com"
 ```
 
+<<<<<<< HEAD
 ## Production Notes
 
 Use PostgreSQL for production, configure `DJANGO_SECRET_KEY`, set `DJANGO_DEBUG=0`, provide `DJANGO_ALLOWED_HOSTS`, collect static files, and run behind Gunicorn/Nginx or a managed host like Render, Railway, PythonAnywhere, DigitalOcean, or AWS.
+=======
+## Database Configuration
+
+**Local Development:** Uses SQLite by default (no server needed).
+
+**Docker/Production:** Uses PostgreSQL. Set environment variables in `.env`:
+- `POSTGRES_USER`
+- `POSTGRES_PASSWORD`
+- `POSTGRES_DB`
+- `POSTGRES_HOST`
+- `POSTGRES_PORT`
+
+The app automatically detects `POSTGRES_HOST` and switches from SQLite to PostgreSQL.
+
+## Production Notes
+
+For production deployment to Railway, Render, DigitalOcean, or AWS:
+1. Set `DJANGO_SECRET_KEY` to a strong random value
+2. Set `DJANGO_DEBUG=0`
+3. Provide `DJANGO_ALLOWED_HOSTS` (comma-separated domains)
+4. Set `POSTGRES_HOST`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB`
+5. Collect static files: `python manage.py collectstatic`
+6. Run behind Gunicorn/Nginx or use a managed host
+
+**GitHub Actions:** Pushes Docker image to GitHub Container Registry on every commit. Deploy the image from `ghcr.io/acewas/WWT:master`.
+>>>>>>> developer

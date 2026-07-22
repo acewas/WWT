@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Contact | Codex Commerce{% endblock %}
+{% block content %}
+<section class="page-header py-5">
+    <div class="container">
+        <p class="eyebrow">Contact</p>
+        <h1>Tell us what you want to build.</h1>
+    </div>
+</section>
+<section class="py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-5">
+                <h2>Let's talk</h2>
+                <p>Messages are stored in the database and can also be emailed to the configured contact address.</p>
+                <p><strong>Email:</strong> hello@example.com<br><strong>Phone:</strong> +254 726785925</p>
+            </div>
+            <div class="col-lg-7">
+                <form class="form-panel" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-primary" type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

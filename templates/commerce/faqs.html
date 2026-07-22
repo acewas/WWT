@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}FAQs | Codex Commerce{% endblock %}
+{% block content %}
+<section class="page-header py-5"><div class="container"><p class="eyebrow">FAQs</p><h1>Questions before you start.</h1></div></section>
+<section class="py-5"><div class="container"><div class="accordion" id="faqAccordion">
+<div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">Can this site scale beyond SQLite?</button></h2><div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion"><div class="accordion-body">Yes. Use PostgreSQL in production, configure environment variables, and deploy behind Gunicorn and Nginx or a managed platform.</div></div></div>
+<div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">How do newsletters send?</button></h2><div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">When a published post is saved, active subscribers receive an email with the title, summary, image, and read-more link. Development uses console email by default.</div></div></div>
+<div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Can I manage content without coding?</button></h2><div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Yes. Services, products, pricing, posts, subscribers, comments, and contact messages are all available in Django admin.</div></div></div>
+</div></div></section>
+{% endblock %}

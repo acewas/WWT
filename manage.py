@@ -1,6 +1,15 @@
 #!/usr/bin/env python
+<<<<<<< HEAD
 import os
 import sys
+=======
+#.venv\Scripts\activate.ps1
+import os
+import sys
+#docker run -d --name wwt-container -p 8000:8000 wwt-website:latest = RUNNING NEW CONTAINER
+#docker start wwt-container = START A STOPPED CONTAINER
+
+>>>>>>> developer
 
 
 def main():

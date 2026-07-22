@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Projects | Waswide Technologies{% endblock %}
+{% block content %}
+<section class="page-header py-5"><div class="container"><p class="eyebrow">Projects</p><h1>Commercial, research, energy, automation, and open-source work.</h1></div></section>
+<section class="py-5"><div class="container"><div class="row g-4">{% for project in projects %}<div class="col-md-6 col-lg-4"><article class="product-card h-100">{% if project.image %}<img src="{{ project.image.url }}" alt="{{ project.title }}">{% endif %}<div class="p-4"><span class="category-pill">{{ project.get_project_type_display }}</span><h2>{{ project.title }}</h2><p>{{ project.summary }}</p><p class="post-meta">{{ project.location }}{% if project.year %} / {{ project.year }}{% endif %}</p><div class="d-flex flex-wrap gap-2">{% for tech in project.technology_list %}<span class="category-pill">{{ tech }}</span>{% endfor %}</div></div></article></div>{% empty %}<p>Add projects in Django admin.</p>{% endfor %}</div></div></section>
+{% endblock %}

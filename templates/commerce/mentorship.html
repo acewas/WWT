@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Mentorship | Waswide Technologies{% endblock %}
+{% block content %}
+<section class="page-header py-5"><div class="container"><p class="eyebrow">Mentorship</p><h1>Mentorship tracks in software engineering, renewable energy, and strategic design.</h1></div></section>
+<section class="py-5"><div class="container"><div class="row g-5"><div class="col-lg-6"><h2>Open Cohorts</h2><div class="row g-3">{% for cohort in cohorts %}<div class="col-12"><article class="feature-card"><span class="category-pill">{{ cohort.get_track_display }}</span><h3>{{ cohort.title }}</h3><p>{{ cohort.summary }}</p><p class="post-meta">{% if cohort.start_date %}Starts {{ cohort.start_date }}{% endif %}{% if cohort.application_deadline %} / deadline {{ cohort.application_deadline }}{% endif %}</p></article></div>{% empty %}<p>No open cohorts yet. Subscribe for launch updates.</p>{% endfor %}</div></div><div class="col-lg-6"><form class="form-panel" method="post" enctype="multipart/form-data">{% csrf_token %}{{ form.as_p }}<button class="btn btn-primary" type="submit">Register Interest</button></form></div></div></div></section>
+{% endblock %}

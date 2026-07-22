@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Services | Waswide Technologies{% endblock %}
+{% block content %}
+<section class="page-header py-5"><div class="container"><p class="eyebrow">Services</p><h1>Systems, energy, and design capabilities for Africa's future.</h1></div></section>
+<section class="py-5"><div class="container"><div class="row g-4">{% for service in services %}<div class="col-md-6 col-lg-4"><article class="feature-card h-100"><i class="bi {{ service.icon|default:'bi-check2-circle' }}"></i><p class="category-pill">{{ service.get_area_display }}</p><h2>{{ service.title }}</h2><p>{{ service.summary }}</p>{% if service.slug %}<a class="text-link" href="{{ service.get_absolute_url }}">Explore service</a>{% endif %}</article></div>{% endfor %}</div></div></section>
+<section class="py-5 bg-soft"><div class="container"><h2 class="mb-4">Engagement Models</h2><div class="row g-4">{% for plan in pricing_plans %}<div class="col-md-4"><article class="pricing-card h-100 {% if plan.is_featured %}featured{% endif %}"><h3>{{ plan.name }}</h3><div class="plan-price">{{ plan.price }}</div><p>{{ plan.description }}</p><ul>{% for feature in plan.feature_list %}<li>{{ feature }}</li>{% endfor %}</ul></article></div>{% endfor %}</div></div></section>
+{% endblock %}

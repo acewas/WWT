@@ -1,0 +1,11 @@
+<article class="post-card h-100">
+    {% if post.featured_image %}
+    <img src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+    {% endif %}
+    <div class="p-4">
+        {% if post.category %}<a class="category-pill" href="{{ post.category.get_absolute_url }}">{{ post.category.name }}</a>{% endif %}
+        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+        <p>{{ post.summary|truncatewords:24 }}</p>
+        <div class="post-meta">{{ post.published_at|date:"M j, Y" }} / {{ post.reading_time_minutes }} min read</div>
+    </div>
+</article>
